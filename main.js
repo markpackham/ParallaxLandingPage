@@ -54,3 +54,10 @@ const slideObserver = new IntersectionObserver(
 );
 
 slideObserver.observe(slides[slides.length - 1]);
+
+// FORM HANDLE //
+const contactForm = document.querySelector("#contact-form");
+const contactBtn = document.querySelector("#contact-btn");
+const contactInput = document.querySelector("#email");
+
+// event listener form submit
