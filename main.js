@@ -60,4 +60,19 @@ const contactForm = document.querySelector("#contact-form");
 const contactBtn = document.querySelector("#contact-btn");
 const contactInput = document.querySelector("#email");
 
+// fake sending email to api endpoint
+function postEmailToDatabase(email) {
+  console.info(`Your email is ${email}`);
+  return new Promise((resolve) => setTimeout(resolve, 1000));
+}
+
+async function handleFormSubmit(e) {
+  e.preventDefault();
+  addDisabledAttribute([contactForm, contactBtn]);
+  const userEmail = contactInput.value;
+  contactInput.style.display = "none";
+  await postEmailToDatabase(userEmail);
+}
+
 // event listener form submit
+contactForm.addEventListener("submit", handleFormSubmit);
