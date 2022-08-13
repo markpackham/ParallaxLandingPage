@@ -102,11 +102,18 @@ contactForm.addEventListener("submit", handleFormSubmit);
 function fadeUpObserverCallback(elsToWatch) {
   elsToWatch.forEach((el) => {
     if (el.isIntersecting) {
-      el.target.classList.add("fadded");
+      el.target.classList.add("faded");
+      fadeUpObserver.unobserve(el.target);
+      el.target.addEventListener(
+        "transitionend",
+        () => {
+          el.target.classList.remove("fade-up", "faded");
+        },
+        { once: true }
+      );
     }
   });
 }
-
 const fadeUpObserverOptions = {
   threshold: 0.6,
 };
