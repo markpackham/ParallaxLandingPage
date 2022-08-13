@@ -96,3 +96,20 @@ async function handleFormSubmit(e) {
 
 // event listener form submit
 contactForm.addEventListener("submit", handleFormSubmit);
+
+// FADE UP OBSERVER
+
+function fadeUpObserverCallback(elsToWatch) {
+  console.log(elsToWatch);
+}
+
+const fadeUpObserverOptions = {};
+
+const fadeUpObserver = new IntersectionObserver(
+  fadeUpObserverCallback,
+  fadeUpObserverOptions
+);
+
+document.querySelectorAll(".fade-up").forEach((item) => {
+  fadeUpObserver.observe(item);
+});
