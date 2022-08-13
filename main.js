@@ -100,10 +100,16 @@ contactForm.addEventListener("submit", handleFormSubmit);
 // FADE UP OBSERVER
 
 function fadeUpObserverCallback(elsToWatch) {
-  console.log(elsToWatch);
+  elsToWatch.forEach((el) => {
+    if (el.isIntersecting) {
+      el.target.classList.add("fadded");
+    }
+  });
 }
 
-const fadeUpObserverOptions = {};
+const fadeUpObserverOptions = {
+  threshold: 0.6,
+};
 
 const fadeUpObserver = new IntersectionObserver(
   fadeUpObserverCallback,
